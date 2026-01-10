@@ -11,19 +11,21 @@ import NotFoundPage from './pages/NotFoundPage.jsx'
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <HomePage />, 
+    path: "/",
+    element: <HomePage />,
     errorElement: <NotFoundPage />,
   },
   {
-    path: '/profiles',
-    element: <ProfilesPage />, 
+    path: "/profiles",
+    element: <ProfilesPage />,
+    children: [
+      {
+        path: "/profiles/:profileId",
+        element: <ProfilePage />,
+      },
+    ],
   },
-  {
-    path: '/',
-    element: <HomePage />, 
-  }
-])
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
